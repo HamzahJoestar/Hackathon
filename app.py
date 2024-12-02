@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import random
 
 app = Flask(__name__)
-
+#hi
 results = [
     "sigma:- you’re just a chill guy",
     "sigma:- you got that special something congratz",
