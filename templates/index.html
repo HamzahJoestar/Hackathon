@@ -25,6 +25,10 @@
             color: #333;
             margin-top: 20px;
         }
+        .result img{
+            max-width: 300px;
+            margin-top: 10px;
+        }
         button {
             padding: 10px 20px;
             font-size: 1em;
@@ -97,7 +101,10 @@
                 } else {
                     clearInterval(interval);
                     loadingDiv.style.display = "none";
-                    resultDiv.innerHTML = `👉 ${data.result}`;
+                    resultDiv.innerHTML = `👉 
+                    ${data.result_text}`;
+                    if (data.result_image){
+                        resultDiv.innerHTML += '<imgsrc="${data.result_image}" alt="Result Image">';
                 }
             }, 1000);
         }
