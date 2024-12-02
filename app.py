@@ -2,22 +2,22 @@ from flask import Flask, render_template, request, jsonify
 import random
 
 app = Flask(__name__)
-#hi
-results = [
-    "sigma:- you’re just a chill guy",
-    "sigma:- you got that special something congratz",
-    "walk proud alpha",
-    "sigma:- yasss queen",
-    "sigma:- pop off king",
-    "chad:- peaking in highschool",
-    "born to mew",
-    "rizzler:- I want you",
-    "rizzler:- You got pull more than a black hole",
-    "npc:- this is you -> -_-",
-    "npc:- stay in school",
-    "beta:- maybe in the next life",
-    "BETAAAAAAAAAAAAAAA"
-]
+
+results_with_images = {
+    "sigma:- you’re just a chill guy": "https://imgur.com/RyhEzAW",
+    "sigma:- you got that special something congratz": "https://imgur.com/RyhEzAW",
+    "walk proud alpha": "https://imgur.com/RyhEzAW",
+    "sigma:- yasss queen": "https://imgur.com/RyhEzAW",
+    "sigma:- pop off king": "https://imgur.com/RyhEzAW",
+    "chad:- peaking in highschool": "https://imgur.com/RyhEzAW",
+    "born to mew": "https://imgur.com/RyhEzAW",
+    "rizzler:- I want you": "https://imgur.com/RyhEzAW",
+    "rizzler:- You got pull more than a black hole": "https://imgur.com/RyhEzAW",
+    "npc:- this is you -> -_-": "https://imgur.com/RyhEzAW",
+    "npc:- stay in school": "https://imgur.com/RyhEzAW",
+    "beta:- maybe in the next life": "https://imgur.com/RyhEzAW",
+    "BETAAAAAAAAAAAAAAA": "https://imgur.com/RyhEzAW"
+}
 
 loading_phrases = [
     "trying to leave ohio...",
@@ -54,11 +54,13 @@ def calculate():
         return jsonify({"error": "Input cannot be empty!"}), 400
 
     loading_messages = get_random_phrases()
-    result = random.choice(results)
+    result = random.choice(list(results_with_images.keys()))
+        image = results_with_images[result]
 
     return jsonify({
         "loading_messages": loading_messages,
-        "result": result
+        "result_text": result,
+        "result_image": image
     })
 
 if __name__ == "__main__":
